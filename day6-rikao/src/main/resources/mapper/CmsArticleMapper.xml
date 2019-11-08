@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alex.cms.dao.CmsArticleMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.alex.cms.domain.CmsArticle">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="summary" property="summary" />
+		<result column="content" property="content" />
+		<result column="picture" property="picture" />
+		<result column="channel_id" property="channelId" />
+		<result column="categroy_id" property="categroyId" />
+		<result column="user_id" property="userId" />
+		<result column="hits" property="hits" />
+		<result column="hot" property="hot" />
+		<result column="status" property="status" />
+		<result column="deleted" property="deleted" />
+		<result column="created" property="created" />
+		<result column="updated" property="updated" />
+		<result column="type" property="type" />
+		<result column="comments" property="comments" />
+		<result column="keywords" property="keywords" />
+		<result column="original" property="original" />
+	</resultMap>
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		id, title, summary, content, picture, channel_id,
+		categroy_id, user_id,
+		hits, hot, status, deleted, created, updated,
+		type,comments,keywords,original
+	</sql>
+	<select id="selectAllArticlesByUserId" resultMap="ArticleFullMap">
+		SELECT
+		cms_article.id AS id,
+		cms_article.title AS title,
+		cms_article.content AS content,
+		cms_article.user_id AS userId,
+		cms_article.hits AS hits,
+		cms_category.`name` AS categoryName,
+		cms_channel.`name` AS channelName,
+		cms_article.updated AS updated,
+		cms_article.type AS type,
+		cms_article.comments AS comments,
+		cms_article.status AS status,
+		cms_article.keywords AS keywords,
+		cms_article.original AS original,
+		cms_category.id AS categoryId,
+		cms_channel.id AS channelId,
+		cms_user.nickname As nickname,
+		cms_user.avatar As avatar
+		FROM
+		cms_article
+		LEFT JOIN cms_category ON
+		cms_category.id = cms_article.categroy_id
+		LEFT JOIN cms_channel ON
+		cms_channel.id = cms_article.channel_id
+		LEFT JOIN cms_user ON
+		cms_user.id = cms_article.user_id
+		${ew.customSqlSegment}
+	</select>
+
+	<select id="selectAllArticlesByHits" resultMap="BaseResultMap">
+		SELECT
+		id,
+		title,
+		content,
+		user_id,
+		hits,
+		updated,
+		type,
+		comments,
+		keywords,
+		original
+		FROM
+		cms_article
+		${ew.customSqlSegment}
+	</select>
+
+	<resultMap type="com.alex.cms.web.vo.ArticleVo" id="ArticleFullMap">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="summary" property="summary" />
+		<result column="content" property="content" />
+		<result column="picture" property="picture" />
+		<result column="hits" property="hits" />
+		<result column="hot" property="hot" />
+		<result column="status" property="status" />
+		<result column="created" property="created" />
+		<result column="updated" property="updated" />
+		<result column="deleted" property="deleted" />
+		<result column="type" property="type" />
+		<result column="comments" property="comments" />
+		<result column="keywords" property="keywords" />
+		<result column="original" property="original" />
+		<association property="category" javaType="com.alex.cms.domain.CmsCategory">
+			<id column="cateid" property="id" />
+			<result column="categoryName" property="name" />
+			<result column="catesorted" property="sorted" />
+		</association>
+		<association property="channel" javaType="com.alex.cms.domain.CmsChannel">
+			<id column="channelId" property="id" />
+			<result column="channelName" property="name" />
+		</association>
+		<association property="author" javaType="com.alex.cms.domain.CmsUser">
+			<result column="nickname" property="nickname" />
+			<result column="avatar" property="avatar" />
+		</association>
+	</resultMap>
+
+</mapper>
