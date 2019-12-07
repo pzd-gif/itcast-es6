@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zs.lianxi.dao.TDriverTypeMapper">
+	<resultMap type="com.zs.lianxi.domain.TDriverType" id="BaseResultMap">
+		<id column="code" property="code"/>
+		<result column="name" property="name"/>
+		<result column="include" property="include"/>	
+	</resultMap>
+	<sql id="Base_Column_List">
+		code,name,include
+	</sql>
+	<select id="genIncludeBycode" resultMap="BaseResultMap">
+		select 
+		t_driver_type.code
+		t_driver_type.name
+		t_driver_type.include
+		from
+		t_driver_type
+		left join t_driver on t_driver_type = t_driver_type.code
+		${ew.customSqlSegment}
+	</select>
+</mapper>
+
