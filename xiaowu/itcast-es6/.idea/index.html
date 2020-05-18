@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6新特性的学习</title>
+</head>
+<body>
+<script>
+   /*const a =1;
+   console.log("a=",a);
+   a=2;
+   console.log("a=",a);*/
+
+   //字符串扩展
+   /*let str = "hello heima";
+   console.log(str,"中是否含了heima",str.includes("heima"));
+   console.log(str,"中是否含了baima",str.includes("baima"));
+
+   console.log(str,"中是否含以hello开头",str.startsWith("hello"));
+   console.log(str,"中是否含以heima开头",str.startsWith("heima"));
+
+   console.log(str,"中是否含以hello结尾",str.endsWith("hello"));
+   console.log(str,"中是否含以heima结尾",str.endsWith("heima"));
+
+   let str2= 'hello itheima itcast';
+   console.log(str2);*/
+
+   //数组结构
+    /*let arr =[1,2,3];
+    const [x,y,z] = arr;
+    console.log(x,y,z);
+
+    const  [a] = arr;
+    console.log(a);*/
+
+   //对象结构
+    /*const person={
+        name:"jack",
+        age:22,
+        language:['java','js','css']
+    }
+    const {name,age,language} = person;
+    console.log(name);
+   console.log(age);
+   console.log(language);*/
+
+
+   //函数优化
+    /*function add(a,b=1) {
+        return a+b;
+    }
+    console.log(add(10));*/
+
+    //箭头函数
+   //一个参数
+   /*var print = function (obj) {
+        console.log(obj);
+    }
+    var print2 = obj => console.log(obj);
+
+   //多个参数
+    var sum = function (a,b) {
+        return a+b;
+    }
+    var sum2 = (a,b) =>a+b;
+
+    //没有参数
+    let sayHello = () => console.log("hello");
+    sayHello();
+
+    var sum3 = (a,b) =>{
+        return a+b;
+    }
+    let  sayHello1 = () =>{
+        console.log("hello");
+        console.log("world");
+    }
+    sayHello1()*/
+
+    //对象的函数属性
+    /*let person = {
+        name:"jack",
+        eat:function (food) {
+            console.log(this.name + "在吃" + food);
+        },
+        eat2:food =>console.log(person.name + "在吃" + food),
+        eat3(food){
+            console.log(this.name +"在吃"+food);
+        }
+    }*/
+
+   //map
+    /*let arr = ['1','20','-5','-3'];
+    console.log(arr);
+
+    let newarr = arr.map(s => parseInt(s));
+    console.log(newarr);*/
+</script>
+</body>
+
+</html>
