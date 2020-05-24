@@ -7,13 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pinyougoucommon" />
+        <module name="pinyougousellergoodsinterface" />
         <module name="pinyougoudao" />
         <module name="pinyougoumanagerweb" />
         <module name="pinyougousellergoodsservice" />
         <module name="pinyougoupojo" />
         <module name="pinyougoushopweb" />
-        <module name="pinyougousellergoodsinterface" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="pinyougouapi" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
