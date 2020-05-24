@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pzd.mapper.HouseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pzd.entity.House">
+        <id column="id" property="id" />
+        <result column="area_name" property="areaName" />
+        <result column="room_nums" property="roomNums" />
+        <result column="wash_nums" property="washNums" />
+        <result column="guest_nums" property="guestNums" />
+        <result column="total_area" property="totalArea" />
+        <result column="direction" property="direction" />
+        <result column="rent_price" property="rentPrice" />
+        <result column="payment_method" property="paymentMethod" />
+        <result column="rent_date" property="rentDate" />
+        <result column="pic_rul" property="picRul" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, area_name, room_nums, wash_nums, guest_nums, total_area, direction, rent_price, payment_method, rent_date, pic_rul
+    </sql>
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pzd.mapper.TestResultMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pzd.entity.TestResult">
+        <id column="id" property="id" />
+        <result column="cid" property="cid" />
+        <result column="result" property="result" />
+        <result column="status" property="status" />
+        <result column="tester" property="tester" />
+        <result column="test_time" property="testTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, cid, result, status, tester, test_time
+    </sql>
+
+
+    <select id="getVo" resultType="com.pzd.entity.TestResultVo">
+        select a.id,a.result,a.tester,a.test_time,a.status,
+        b.case_num as caseNum ,b.id as cid,b.case_desc as caseDesc,b.expect
+        from tb_test_result a
+        left join tb_case b
+        on a.cid = b.id
+        ${ew.customSqlSegment}
+        order by a.test_time
+    </select>
+</mapper>
